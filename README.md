@@ -1,6 +1,6 @@
 # General instructions
 
-You must use terminal commands only to solve all the exercices in this subject.
+You must use terminal commands only to solve all the exercises in this subject.
 
 There are three types of questions in this project. You can identify the type of
 answer expected thanks to a color code:
@@ -25,19 +25,54 @@ Debian virtual machine (Think about live CD debian).
 
 1. Get the list of the network interfaces of the machine without displaying any
    detail for these interfaces. Only the list of names.
+
+ifconfig -l
+
 2. Identify and display the Ethernet interface characteristics: (a) Identify
     broadcast address (b) Identify all IP adresses which are part of the same
     subnet
+
+ifconfig | grep "broadcast" | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"
+
+arp -a
+
 3. Identify the MAC address of the Wi-Fi card
-4. Identifiy the default gateway in the routing table
+
+en0..X refer to your physical network interfaces. Most new Mac devices will just have en0 - your WiFi. en0 is the first device to start, en1 the second, etc.
+
+4. Identify the default gateway in the routing table.
+
+netstat -nr | grep 'default' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"
+https://td.unh.edu/TDClient/60/Portal/KB/ArticleDet?ID=784
+https://www.techrepublic.com/article/understanding-routing-tables/
+
 5. Identify the IP address of the DNS that responds to the following url:
    slash16.org
+
+nslookup slahs16.org | grep 'Server' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"
+https://www.java67.com/2012/12/unix-command-to-find-ip-address-from-hostname.html
+
 6. Get the complete path of the file that contains the IP address of the DNS
    server you’re using
+
+/etc/resolv.conf
+
+
 7. Query an external DNS server on the slash16.org domain name (ie. : google
    8.8.8.8)
+
+nslookup slash16.org 8.8.8.8
+
 8. Find the provider of slash16.org
+
+AWS (amazon web services)
+
 9. Find the external IP of 42.fr
+
+163.172.250.12
+163.172.250.13
+dig +short 42.fr
+
 10. Identify the network devices between your computer and the slash16.org
     domain
 11. Use the output of the previous command to find the name and IP address of
