@@ -75,14 +75,34 @@ dig +short 42.fr
 
 10. Identify the network devices between your computer and the slash16.org
     domain
+
+traceroute slash16.org
+
 11. Use the output of the previous command to find the name and IP address of
     the device that makes the link between you (local network) and the outside
     world
+
+Run traceroute slash16.org, line 1 is the local IP adress, then line 2 is the NAT router who's remaping the local IP to a public IP pointing to dc3, the host of our public IP..
+- 1 : Local IP
+- 2 : NAT IP: 10.60.1.1
+- 3 : Public IP
+
 12. Find the IP that was assigned to you by dhcp server
+
+ifconfig en0 | grep "inet " | awk '{print $2}'
+
 13. Thanks to the previous question and the reverse DNS find the name of your
     host
+
+host 10.60.1.1
+
 14. What file contains the local DNS entries?
+
+/etc/hosts
+
 15. Make the intra.42.fr address reroute to 46.19.122.85
+
+sudo echo "45.19.122.85         intra.42.fr" > /etc/hosts
 
 # System
 
