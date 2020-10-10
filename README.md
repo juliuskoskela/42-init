@@ -38,7 +38,8 @@ arp -a
 
 3. Identify the MAC address of the Wi-Fi card
 
-en0..X refer to your physical network interfaces. Most new Mac devices will just have en0 - your WiFi. en0 is the first device to start, en1 the second, etc.
+en0..X refer to your physical network interfaces. Most new Mac devices will just
+have en0 - your WiFi. en0 is the first device to start, en1 the second, etc.
 
 4. Identify the default gateway in the routing table.
 
@@ -49,7 +50,8 @@ https://www.techrepublic.com/article/understanding-routing-tables/
 5. Identify the IP address of the DNS that responds to the following url:
    slash16.org
 
-nslookup slahs16.org | grep 'Server' | grep -E -o "([0-9]{1,3}[\.]){3}[0-9]{1,3}"
+nslookup slahs16.org | grep 'Server' | grep -E -o
+"([0-9]{1,3}[\.]){3}[0-9]{1,3}"
 https://www.java67.com/2012/12/unix-command-to-find-ip-address-from-hostname.html
 
 6. Get the complete path of the file that contains the IP address of the DNS
@@ -69,9 +71,7 @@ AWS (amazon web services)
 
 9. Find the external IP of 42.fr
 
-163.172.250.12
-163.172.250.13
-dig +short 42.fr
+163.172.250.12 163.172.250.13 dig +short 42.fr
 
 10. Identify the network devices between your computer and the slash16.org
     domain
@@ -82,7 +82,9 @@ traceroute slash16.org
     the device that makes the link between you (local network) and the outside
     world
 
-Run traceroute slash16.org, line 1 is the local IP adress, then line 2 is the NAT router who's remaping the local IP to a public IP pointing to dc3, the host of our public IP..
+Run traceroute slash16.org, line 1 is the local IP adress, then line 2 is the
+NAT router who's remaping the local IP to a public IP pointing to dc3, the host
+of our public IP..
 - 1 : Local IP
 - 2 : NAT IP: 10.60.1.1
 - 3 : Public IP
