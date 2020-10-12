@@ -1,1 +1,1 @@
-ifconfig | grep 'en1' -A1 | sed '/en1/d' | cut -d ' ' -f2
+ifconfig -L en1 | grep "ether " | cut -d " " -f 2
