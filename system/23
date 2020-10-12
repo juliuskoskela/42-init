@@ -1,0 +1,2 @@
+graphic sessio: boot and login with new user credentials
+ssh [new_user]@127.0.0.1 -p 2222
